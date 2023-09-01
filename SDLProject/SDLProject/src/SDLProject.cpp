@@ -17,7 +17,10 @@ int main()
 		600,				// window width
 		800,				// window height
 		SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL);			// window flags
-	if (window == nullptr) {
+	if (window == nullptr) 
+	{
 		return false;
 	}
+
+	//useless comment
 }
