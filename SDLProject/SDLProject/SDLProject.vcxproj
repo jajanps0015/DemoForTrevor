@@ -70,12 +70,29 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>$(SolutionDir)out\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)out\int\$(Configuration)\$(PlatformTarget)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(SolutionDir)out\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)out\int\$(Configuration)\$(PlatformTarget)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)out\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)out\int\$(Configuration)\$(PlatformTarget)</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)out\$(Configuration)\$(PlatformTarget)</OutDir>
+    <IntDir>$(SolutionDir)out\int\$(Configuration)\$(PlatformTarget)</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)include\innerinclude;$(SolutionDir)SDL2\include\;$(SolutionDir)SDL2_image\include\;$(SolutionDir)SDL2_mixer\include\;$(SolutionDir)SDL2_ttf\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -90,6 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)include\innerinclude;$(SolutionDir)SDL2\include\;$(SolutionDir)SDL2_image\include\;$(SolutionDir)SDL2_mixer\include\;$(SolutionDir)SDL2_ttf\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -104,6 +122,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)include\innerinclude;$(SolutionDir)SDL2\include\;$(SolutionDir)SDL2_image\include\;$(SolutionDir)SDL2_mixer\include\;$(SolutionDir)SDL2_ttf\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -118,6 +137,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)include\;$(ProjectDir)include\innerinclude;$(SolutionDir)SDL2\include\;$(SolutionDir)SDL2_image\include\;$(SolutionDir)SDL2_mixer\include\;$(SolutionDir)SDL2_ttf\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,7 +147,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="SDLProject.cpp" />
+    <ClCompile Include="src\SDLProject.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="include\innerinclude\innerheader.h" />
+    <ClInclude Include="include\SDLMain.h" />
+    <ClInclude Include="include\SomeHeader.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
